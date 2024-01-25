@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>index</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="app.min.js"></script>
+    <script src="element.min.js"></script>
+    <script src="notation.min.js"></script>
+    <script src="filament.js" type="text/javascript">
+    </script>
+</head>
+<body >
+    <div id="bodyDIV" ondblclick="cancleDB(event)" onclick="cancleDB(event)">
+        <script>
+            function cancleDB(ev) {
+                ev.preventDefault();
+            }
+            let ws = new WebSocket("wss://foxintango.me:443");
+        </script>
+ مرحبا ، لطيف لمقابلتك .
+        <div id='flowDIV'></div>
+        <svg>
+            <g onclick="pathclick(this)" class="vf-clef" id="svg"><path id='path' stroke-width="0.1" stroke-dasharray="none" fill="red" stroke="none" d="M28.711 65.844C28.66 65.413,28.711 65.388,28.939 65.16C32.893 61.485,35.883 56.847,35.883 51.246C35.883 48.078,34.996 44.935,33.501 42.756C32.944 41.945,32.006 40.931,31.6 40.931C31.093 40.931,29.953 41.869,29.243 42.68C26.532 45.67,25.644 50.232,25.644 54.034C25.644 56.138,25.923 58.52,26.177 60.015C26.253 60.446,26.278 60.522,25.847 60.902C20.576 65.236,15 70.457,15 77.832C15 84.168,19.334 90.2,28.28 90.2C29.117 90.2,30.08 90.124,30.815 89.972C31.195 89.896,31.271 89.87,31.347 90.301C31.778 92.76,32.335 95.928,32.335 97.651C32.335 103.049,28.686 103.708,26.532 103.708C24.555 103.708,23.617 103.125,23.617 102.644C23.617 102.39,23.946 102.289,24.783 102.01C25.923 101.681,27.216 100.718,27.216 98.589C27.216 96.587,25.949 94.863,23.718 94.863C21.285 94.863,19.815 96.815,19.815 99.07C19.815 101.427,21.235 105.026,26.76 105.026C29.193 105.026,33.932 103.911,33.932 97.727C33.932 95.623,33.273 92.177,32.893 89.896C32.817 89.465,32.842 89.516,33.349 89.287C37.049 87.818,39.482 84.726,39.482 80.594C39.482 75.931,36.061 71.8,30.688 71.8C29.75 71.8,29.75 71.8,29.623 71.141M32.158 46.583C33.349 46.583,34.337 47.571,34.337 49.573C34.337 53.628,30.865 56.923,28.001 59.432C27.748 59.66,27.596 59.61,27.52 59.128C27.368 58.19,27.292 56.949,27.292 55.783C27.292 50.08,29.928 46.583,32.158 46.583M28.179 71.445C28.28 72.13,28.28 72.104,27.621 72.307C24.428 73.397,22.324 76.286,22.324 79.403C22.324 82.673,24.048 85.004,26.532 85.866C26.836 85.967,27.266 86.069,27.52 86.069C27.799 86.069,27.951 85.891,27.951 85.663C27.951 85.41,27.672 85.308,27.419 85.207C25.873 84.548,24.783 82.977,24.783 81.304C24.783 79.201,26.202 77.655,28.432 77.021C29.015 76.869,29.091 76.92,29.167 77.325L30.992 88.198C31.068 88.603,31.017 88.603,30.485 88.705C29.902 88.806,29.167 88.882,28.432 88.882C22.046 88.882,17.915 85.334,17.915 80.265C17.915 78.111,18.295 75.222,21.311 71.8C23.516 69.367,25.188 67.999,26.886 66.63C27.266 66.326,27.343 66.377,27.419 66.757M30.688 77.249C30.612 76.793,30.663 76.692,31.093 76.742C34.059 76.996,36.492 79.479,36.492 82.673C36.492 84.979,35.098 86.829,33.07 87.868C32.639 88.071,32.563 88.071,32.487 87.64"></path></g>
+            <path stroke-width="0.1" stroke-dasharray="none" fill="red" stroke="none" d="M149 376l-300 -62v125l300 62v-125zM-151 252l300 63v-125l-300 -63v125z"></path>
+        </svg>
+        <div id="test" style="width:100px;height:100px"></div>
+        <canvas width="500" height="300"></canvas>
+        <script type="text/javascript">
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                console.log(ev.dataTransfer.files);
+                var reader = new FileReader();
+                //3,调用FileReader的方法
+                reader.readAsDataURL(ev.dataTransfer.files[0]);
+                //4，调用事件，当操作成功/失败后进行操作
+                reader.onload = function () {
+                    console.log(this.result);
+                }
+            }
+        </script>
+
+        <script>
+            // get and set
+            class O {
+                constructor() {
+                    this.som = '';
+                }
+
+                get s() {
+                    console.log('getter : ');
+                    console.log(arguments);
+                    return this.som;
+                }
+
+                set s(v) {
+                    console.log('setter : ');
+                    console.log(arguments);
+                    this.som = v;
+                }
+            }
+
+            let o = new O();
+
+            o.s = '';
+            let s = o.s;
+        </script>
+
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">将文件拖放到此处</div>
+        <div id="content">文件内容</div>
+        <input type="file" id="file" multiple/>
+        <script>
+            //https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader
+            var file = document.getElementById("file");
+            //判断是否存在FileReader（）对象
+            if (window.FileReader) {
+                console.log(file.files);
+            } else {
+                console.log("error")
+            }
+            file.onchange = function () {
+                //1，获取文件列表(input：files)
+                var files = input.files;
+                for (var i = 0; i < files.length; i++) {
+                    var fileList = files[i];
+                    //2,创建FileReader()对象
+                    var reader = new FileReader();
+                    //3,调用FileReader的方法
+                    reader.readAsDataURL(fileList);
+                    //4，调用事件，当操作成功/失败后进行操作
+                    reader.onload = function () {
+                        console.log(this.result);
+                        //document.getElementById('content').innerText = this.result;
+                    }
+                }
+            }
+        </script>
+        <script>
+            async function LoadFile() {
+                /**
+                 *  https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker
+                 *  This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.
+                 */
+                const pickerOpts = {
+                    types: [
+                        {
+                            description: 'Images',
+                            accept: {
+                                'image/*': ['.png', '.gif', '.jpeg', '.jpg']
+                            }
+                        },
+                    ],
+                    excludeAcceptAllOption: true,
+                    multiple: false
+                };
+                // open file picker, destructure the one element returned array
+                return await window.showOpenFilePicker(pickerOpts);
+
+                // run code with our fileHandle
+            }
+            async function SaveFile() {
+                /**
+                 * https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker
+                 */
+            }
+            /**
+             * 文件保存 -- blob url link click
+             * http://wjhsh.net/anniey-p-15794190.html
+             */
+            function pathclick(e) {
+                console.log('path clicked.');
+                console.log(window.event);
+                e.style.fill = 'rgba(0,0,255,1.0)';
+
+                let input = document.createElement('input');
+                input.type = 'file';
+                input.click();
+                input.onchange = function () {
+                    //1，获取文件列表(input：files)
+                    var files = input.files;
+                    for (var i = 0; i < files.length; i++) {
+                        var fileList = files[i];
+                        //2,创建FileReader()对象
+                        var reader = new FileReader();
+                        //3,调用FileReader的方法
+                        reader.readAsDataURL(fileList);
+                        //4，调用事件，当操作成功/失败后进行操作
+                        reader.onload = function () {
+                            console.log(this.result);
+                            //https://developer.mozilla.org/zh-CN/docs/Glossary/Base64
+                            //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent
+                            document.getElementById('content').innerText = decodeURIComponent(this.result);
+                        }
+                    }
+                }
+
+                const xhr = new XMLHttpRequest();
+                xhr.onload = () => {
+                    if (xhr.status == 200 && xhr.response != null) {
+                        let contentType = xhr.getResponseHeader("Content-Type");
+                        console.log(JSON.stringify(xhr.responseText));
+                    }
+                }
+                xhr.open("GET", 'hello');
+                xhr.send();
+
+            }
+        </script>
+    </div>
+    <img src="2024-01-20.png"/>
+</body>
+</html>

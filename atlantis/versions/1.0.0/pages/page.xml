@@ -1,0 +1,8 @@
+<!DOCTYPE uiml>
+<uiml>
+  <include src="views/view.xml"></include>
+  <component namespace="element.js" name="view" script="view.js">
+    <view id="main">InnerText</view>
+    <theme></theme>
+  </component>
+</uiml>
