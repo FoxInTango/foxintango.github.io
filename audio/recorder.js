@@ -17,9 +17,14 @@ if (navigator.mediaDevices.getUserMedia) {
 
             //录音的同时在耳机播放
             var source = audioContext.createMediaStreamSource(stream);
-
+            
             console.log(source);
             const gain = audioContext.createGain(); // 创建一个增益节点
+
+            // 创建二阶滤波器
+            var biquadFilter = audioContext.createBiquadFilter();
+            biquadFilter.type = "lowshelf";
+            biquadFilter.frequency.value = 1000;
             
             
             const oscillator = audioContext.createOscillator();
@@ -32,10 +37,10 @@ if (navigator.mediaDevices.getUserMedia) {
             gain.gain.value = 0.1; // 将增益设置为0（相当于音量设置为0）
 
             //oscillator.connect(gain);
-            source.connect(gain);
-            gain.connect(audioContext.destination);
+            source.connect(biquadFilter);
+            biquadFilter.connect(audioContext.destination);
 
-            oscillator.start();
+            //oscillator.start();
         })
 } else {
   console.error("浏览器不支持 getUserMedia");
