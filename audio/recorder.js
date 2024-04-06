@@ -6,23 +6,23 @@ const player = document.querySelector(".audio-player");
 
 if (navigator.mediaDevices.getUserMedia) {
     var chunks = [];
-    var audioContext;
+    //var audioContext;
     const constraints = { audio: true };
 
     navigator.mediaDevices.getUserMedia(constraints).then(
         stream => {
             console.log("授权成功！");
-            audioContext = new AudioContext();
-            
+            context = new window.AudioContext();
+            context.bufferSize = 1024;
 
             //录音的同时在耳机播放
-            var source = audioContext.createMediaStreamSource(stream);
+            var source = context.createMediaStreamSource(stream);
             
-            console.log(source);
-            const gain = audioContext.createGain(); // 创建一个增益节点
-
+            const gain = context.createGain(); // 创建一个增益节点
+            gain.gain.value = 3; // 将增益设置为0（相当于音量设置为0）
+            /*
             // 创建二阶滤波器
-            var biquadFilter = audioContext.createBiquadFilter();
+            var biquadFilter = context.createBiquadFilter();
             biquadFilter.type = "lowshelf";
             biquadFilter.frequency.value = 1000;
             
@@ -30,17 +30,18 @@ if (navigator.mediaDevices.getUserMedia) {
             const oscillator = audioContext.createOscillator();
             oscillator.type = 'square';
             oscillator.frequency.value = 440; // 不能直接给frequency负值，可以设置其value
-            // oscillator.frequency.exponentialRampToValueAtTime(440, 1) // 也可以通过它提供的方法来设置
+            oscillator.frequency.exponentialRampToValueAtTime(440, 1) // 也可以通过它提供的方法来设置
             
-            
-
-            gain.gain.value = 0.1; // 将增益设置为0（相当于音量设置为0）
-
-            //oscillator.connect(gain);
-            source.connect(biquadFilter);
-            biquadFilter.connect(audioContext.destination);
+            */
+            //oscillator.connect(audioContext.destination);
+            source.connect(gain);
+            gain.connect(context.destination);
+            //biquadFilter.connect(audioContext.destination);
 
             //oscillator.start();
+            console.log(context);
+            console.log(source);
+            console.log(context.destination);
         })
 } else {
   console.error("浏览器不支持 getUserMedia");
