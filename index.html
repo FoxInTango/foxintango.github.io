@@ -1,10 +1,90 @@
-<!doctype html>
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .name {
+            font-family: 'Cursive', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .links a:hover {
+            background-color: #0056b3;
+        }
+        .links i {
+            margin-right: 8px;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 500px;
+        }
+        .info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .info p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<a herf="我的自白.pdf">我的自白</a>
+    <div class="container">
+        <div class="name">foxintango</div>
+        
+        <div class="links">
+            <a href="#"><i class="fas fa-home"></i>Home</a>
+            <a href="#"><i class="fas fa-envelope"></i>Contact</a>
+            <a href="#"><i class="fas fa-briefcase"></i>Portfolio</a>
+            <a href="#"><i class="fas fa-book"></i>Blog</a>
+            <a href="#"><i class="fas fa-cog"></i>Settings</a>
+        </div>
+
+        <div class="info">
+            <h3>City</h3>
+            <p>Shanghai</p>
+            <h3>职业简介</h3>
+            <p>Web Developer with a passion for creating responsive and accessible web applications.</p>
+            <h3>爱好简介</h3>
+            <p>Enjoys photography, hiking, and exploring new technologies.</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript can be added here if necessary for interactivity.
+        // For this template, no JS is required.
+    </script>
 </body>
 </html>
